@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .qr-container { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Reserva ID: {{ reserva.idSolicitud }}</h1>
+    <p>Nombre: {{ reserva.nombre }}</p>
+    <div class="qr-container">
+        <p><strong>Escanea este código QR para descargar el PDF de tu reserva:</strong></p>
+        {% if qr_code %}
+            <img src="data:image/png;base64,{{ qr_code }}" alt="Código QR">
+        {% else %}
+            <p>No se pudo generar el código QR.</p>
+        {% endif %}
+        <p>O descarga directamente desde este enlace: <a href="{{ pdf_url }}">{{ pdf_url }}</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            width: 80%;
+        }
+        h1 {
+            text-align: center;
+        }
+        .details {
+            margin-bottom: 20px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 300px;
+            height: auto;
+            border: 1px solid #ccc;
+            padding: 5px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalles de Reserva</h1>
+    <div class="details">
+        <p><strong>Nombre:</strong> {{ reserva.nombre }}</p>
+        <p><strong>Teléfono:</strong> {{ reserva.telefono }}</p>
+        <p><strong>Fecha de Reserva:</strong> {{ reserva.fechareserva }}</p>
+        <p><strong>Hora de Reserva:</strong> {{ reserva.horareserva }}</p>
+        <p><strong>Cantidad de Hermanos:</strong> {{ reserva.cantidadhermanos }}</p>
+        <p><strong>Observaciones:</strong> {{ reserva.observaciones }}</p>
+        <p><strong>Sitio Web:</strong> <a href="{{ reserva.website }}">{{ reserva.website }}</a></p>
+        <p><strong>Email:</strong> {{ reserva.email }}</p>
+        <p><strong>Donante:</strong> {{ reserva.donante|yesno:"Sí,No" }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ reserva.fechanacimiento|date:"d-m-Y" }}</p>
+        <p><strong>Estado Reserva:</strong> {{ reserva.estadoReservaId.estadoReservaNombre }}</p>
+        <p><strong>Tipo Solicitud:</strong> {{ reserva.tipoSolicitudId.tipoSolicitud }}</p>
+    </div>
+
+    {% if imagen_url %}
+    <div class="image-container">
+        <p><strong>Imagen Carnet:</strong></p>
+        <img src="{{ imagen_url }}" alt="Imagen del Carnet">
+    </div>
+    {% else %}
+    <p><strong>Imagen Carnet:</strong> No disponible</p>
+    {% endif %}
+</body>
+</html>
